@@ -1,15 +1,20 @@
 package spring.com.di.ui;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
-import spring.com.di.Exam;
+import spring.com.di.entity.Exam;
 
+@Component("console")
 public class GridExamConsole implements ExamConsole {
-
+	@Autowired
 	private Exam exam;
 
 	public GridExamConsole() {
+		System.out.println("Constructor");
 	}
+
 
 	public GridExamConsole(Exam exam) {
 		this.exam = exam;
@@ -21,9 +26,9 @@ public class GridExamConsole implements ExamConsole {
 	}
 	
 //	<property name="exam" ref="exam"></property>
-	@Autowired
 	@Override
 	public void setExam(Exam exam) {
+		System.out.println("setter");
 		this.exam = exam;
 	}
 

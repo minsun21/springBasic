@@ -1,6 +1,6 @@
 package spring.com.di.ui;
 
-import spring.com.di.Exam;
+import spring.com.di.entity.Exam;
 
 public interface ExamConsole {
 	void print();

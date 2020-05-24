@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import spring.com.di.ui.ExamConsole;
@@ -24,10 +25,10 @@ public class Program {
 		
 		// SPRING으로 DI 하기 - 1. XML
 		//ExamConsole console = ?;
-		ApplicationContext context = new ClassPathXmlApplicationContext("spring/com/di/setting.xml");
-//		ExamConsole console = (ExamConsole) context.getBean("console");
-		ExamConsole console = context.getBean(ExamConsole.class);
-		console.print();
+//		ApplicationContext context = new ClassPathXmlApplicationContext("spring/com/di/setting.xml");
+////		ExamConsole console = (ExamConsole) context.getBean("console");
+//		ExamConsole console = context.getBean(ExamConsole.class);
+//		console.print();
 		
 		// 컬렉션 
 //		List<Exam> exams = new ArrayList<>();
@@ -37,5 +38,15 @@ public class Program {
 //			System.out.println(exam);
 //		}
 		
+		
+		// 2. Annotation
+		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		ExamConsole console = (ExamConsole) context.getBean("console");
+		console.print();
+		
+		// 여러개의 설정 파일
+//		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
+//		ctx.register(AppConfig.class,AppConfig2.class);
+//		ctx.refresh();
 	}
 }

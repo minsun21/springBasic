@@ -7,7 +7,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
-	<context:annotation-config />
+	<!-- <context:component-scan base-package="spring.com.di.ui ,spring.com.di.entity " /> -->
 	<!-- Exam exam = new springExam(); -->
 	<!-- Exam exam = new springExam(10,10,10); -->
 	<!--<bean id="exam" class="spring.com.di.springExam"> <constructor-arg name="kor" 
@@ -15,23 +15,21 @@
 		value="10"></constructor-arg> <constructor-arg name="math" type="int" value="10"></constructor-arg> 
 		<constructor-arg name="com" type="int" value="10"></constructor-arg> </bean> -->
 	<!-- p이용 -->
-	<bean id="exam" class="spring.com.di.SpringExam" p:kor="10"
-		p:eng="20">
-	</bean>
+	<!-- <bean id="exam1" class="spring.com.di.SpringExam" p:kor="10" p:eng="20"> 
+		</bean> <bean id="exam2" class="spring.com.di.SpringExam" p:kor="10" p:eng="30"> 
+		</bean> -->
 	<!-- ExamConsole console = new GridExamConsole(exam); -->
 	<!-- setter DI-> console.setExam(exam); -->
-	<bean id="console" class="spring.com.di.ui.GridExamConsole">
-		<!-- <property name="exam" ref="exam"></property> -->
-	</bean>
+	<!-- <bean id="console" class="spring.com.di.ui.GridExamConsole"> <property 
+		name="exam" ref="exam"></property> </bean> -->
 
 	<!-- 컬렉션 생성 -->
 	<!-- List<Exam> exams = new ArrayList<>(); -->
 	<!-- util 이용 -->
-	<util:list id="exams" list-class="java.util.ArrayList">
-		<bean class="spring.com.di.SpringExam" p:kor="10" />
-		<ref bean="exam"></ref>
-	</util:list>
+	<!-- <util:list id="exams" list-class="java.util.ArrayList"> <bean class="spring.com.di.SpringExam" 
+		p:kor="10" /> <ref bean="exam"></ref> </util:list> 용 -->
 	<!-- 생성자 이용 <bean id="exams" class="java.util.ArrayList"> <constructor-arg> 
 		<list> <bean class="spring.com.di.SpringExam" p:kor="10" p:eng="20" /> <ref 
 		bean="exam"></ref> </list> </constructor-arg> </bean> -->
+
 </beans>
