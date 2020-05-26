@@ -66,6 +66,8 @@ public class SpringExam implements Exam {
 //		System.out.println("시간은 " +message);
 		
 		int result= kor + eng + math + com;
+		if(kor > 100)
+			throw new IllegalArgumentException("유효하지 않은 점수");
 		return result;
 	}
 
